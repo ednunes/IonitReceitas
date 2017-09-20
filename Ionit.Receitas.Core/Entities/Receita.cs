@@ -1,23 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Ionit.Receitas.Core.Entities
+﻿namespace Ionit.Receitas.Core.Entities
 {
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Definição da receita
+    /// </summary>
     public class Receita
     {
-        public int Id { get; set; }
-        public string Titulo { get; set; }
-        public List<Ingrediente> Ingredientes { get; set; }
-        public string ModoPreparo { get; set; }
-        public string TempoPreparo { get; set; }
+        #region Propriedades
 
-        public class Ingrediente
-        {
-            public int IdReceita { get; set; }
-            public string Nome { get; set; }
-            public string UnidadeMedida { get; set; }
-            public string Quantidade { get; set; }
-        }
+        /// <summary>
+        /// Define o id da receita.
+        /// </summary>
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Define o título da receita.
+        /// </summary>
+        public string Titulo { get; set; }
+
+        /// <summary>
+        /// Define o tempo de preparo em minutos.
+        /// </summary>
+        public int TempoPreparo { get; set; }
+
+        /// <summary>
+        /// Define o rendimento em porções da receita.
+        /// </summary>
+        public int RendimentoPorcao { get; set; }
+
+        /// <summary>
+        /// Define a categoria da receita.
+        /// </summary>
+        public ReceitaCategoria Categoria { get; set; }
+
+        /// <summary>
+        /// Define a lista de ingredientes.
+        /// </summary>
+        public IEnumerable<ReceitaIngrediente> Ingredientes { get; set; }
+
+        /// <summary>
+        /// Define a lista de tags.
+        /// </summary>
+        public IEnumerable<ReceitaTag> Tags { get; set; }
+
+        /// <summary>
+        /// Define a lista de curtidas.
+        /// </summary>
+        public IEnumerable<ReceitaCurtida> Curtidas { get; set; }
+
+        #endregion
     }
 }
