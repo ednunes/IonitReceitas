@@ -1,17 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{587223C8-A550-450A-AA6F-97F5F761A064}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{5F1A7E75-5DF5-4E09-BC7D-C620822BBA06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ionit.Receitas.Core", "Ionit.Receitas.Core\Ionit.Receitas.Core.csproj", "{DB81610F-BB3F-4C95-82B9-8E62E41E5D6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ionit.Receitas.Core", "Ionit.Receitas.Core\Ionit.Receitas.Core.csproj", "{DB81610F-BB3F-4C95-82B9-8E62E41E5D6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ionit.Receitas.Web", "Ionit.Receitas.Web\Ionit.Receitas.Web.csproj", "{9107A300-89DA-4A02-9AD5-6A2CCE3E39FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ionit.Receitas.Web", "Ionit.Receitas.Web\Ionit.Receitas.Web.csproj", "{9107A300-89DA-4A02-9AD5-6A2CCE3E39FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ionit.Receitas.WebApi", "Ionit.Receitas.WebApi\Ionit.Receitas.WebApi.csproj", "{A3E30C74-731A-48A4-B13F-3D23D7842B5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ionit.Receitas.WebApi", "Ionit.Receitas.WebApi\Ionit.Receitas.WebApi.csproj", "{A3E30C74-731A-48A4-B13F-3D23D7842B5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{64D8FFB4-39C3-4B14-901D-295D6AA6B20F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ionit.Receitas.Test", "Ionit.Receitas.Test\Ionit.Receitas.Test.csproj", "{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{A3E30C74-731A-48A4-B13F-3D23D7842B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3E30C74-731A-48A4-B13F-3D23D7842B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3E30C74-731A-48A4-B13F-3D23D7842B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +47,9 @@ Global
 		{DB81610F-BB3F-4C95-82B9-8E62E41E5D6A} = {587223C8-A550-450A-AA6F-97F5F761A064}
 		{9107A300-89DA-4A02-9AD5-6A2CCE3E39FD} = {5F1A7E75-5DF5-4E09-BC7D-C620822BBA06}
 		{A3E30C74-731A-48A4-B13F-3D23D7842B5D} = {5F1A7E75-5DF5-4E09-BC7D-C620822BBA06}
+		{C75C2474-4B37-4BC5-86C6-DE067DDB7CA1} = {64D8FFB4-39C3-4B14-901D-295D6AA6B20F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAEE3CB3-DAFB-4235-BD5F-1FF76B5F51A0}
 	EndGlobalSection
 EndGlobal
