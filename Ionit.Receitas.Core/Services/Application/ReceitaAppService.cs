@@ -1,17 +1,27 @@
-﻿using Ionit.Receitas.Core.Interfaces.Services.Application;
-using Ionit.Receitas.Core.Entities;
-using Ionit.Receitas.Core.Dto;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Ionit.Receitas.Core.Services.Domain;
-using Ionit.Receitas.Core.Interfaces.Services.Domain;
-
-namespace Ionit.Receitas.Core.Services.Application
+﻿namespace Ionit.Receitas.Core.Services.Application
 {
+    using Ionit.Receitas.Core.Interfaces.Services.Application;
+    using Ionit.Receitas.Core.Entities;
+    using Ionit.Receitas.Core.Dto;
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Ionit.Receitas.Core.Services.Domain;
+    using Ionit.Receitas.Core.Interfaces.Services.Domain;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class ReceitaAppService : IReceitaAppService
     {
+        #region Variáveis
+
+        /// <summary>
+        /// Domínio de serviços 
+        /// </summary>
         protected readonly IDomainService<Receita> _service;
+
+        #endregion
 
         public ReceitaAppService(IDomainService<Receita> service)
         {
