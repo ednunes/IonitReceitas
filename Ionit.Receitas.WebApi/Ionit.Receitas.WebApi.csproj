@@ -16,5 +16,8 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ionit.Receitas.Core\Ionit.Receitas.Core.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -1,16 +1,13 @@
 ﻿namespace Ionit.Receitas.Core.Services.Application
 {
-    using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Ionit.Receitas.Core.Entities;
-    using Ionit.Receitas.Core.Dto;
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using Ionit.Receitas.Core.Services.Domain;
+    using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Ionit.Receitas.Core.Interfaces.Services.Domain;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
-    /// 
+    /// Define a interface de serviço pública para Receita.
     /// </summary>
     public class ReceitaAppService : IReceitaAppService
     {
@@ -23,76 +20,106 @@
 
         #endregion
 
+        #region Construtores
+
+        /// <summary>
+        /// Inicializa o construtor da classe com o serviço de domínio de Receita.
+        /// </summary>
+        /// <param name="service"></param>
+
         public ReceitaAppService(IDomainService<Receita> service)
         {
             _service = service;
         }
 
-        public int Alterar(ReceitaDto dto)
-        {
-            throw new NotImplementedException();
-        }
+        #endregion
 
-        public ReceitaConsultaCompletaDto Consultar()
-        {
-            throw new NotImplementedException();
-        }
+        #region Métodos
 
+        /// <summary>
+        /// Realizar a inserção da receita no banco de dados.
+        /// </summary>
+        /// <param name="dto">Receita a ser inserida.</param>
+        /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
         public int Inserir(ReceitaDto dto)
         {
-            Receita entity = new Receita()
+            var entity = new Receita()
             {
                 Titulo = dto.Titulo,
-                ModoPreparo = dto.ModoPreparo,
-                TempoPreparo = dto.TempoPreparo
-            };
-
-            foreach (ReceitaDto.Ingrediente ing in dto.Ingredientes)
-            {
-                Receita.Ingrediente ingrediente = new Receita.Ingrediente()
+                TempoPreparo = dto.TempoPreparo,
+                RendimentoPorcao = dto.RendimentoPorcao,
+                Categoria = new ReceitaCategoria()
                 {
-                    Nome = ing.Nome,
-                    UnidadeMedida = ing.UnidadeMedida,
-                    Quantidade = ing.Quantidade
-                };
-
-                entity.Ingredientes.Add(ingrediente);
-            }
+                    Nome = dto.Categoria?.Nome
+                },
+                Ingredientes = dto.Ingredientes.Select(ingrediente =>
+                {
+                    return new ReceitaIngrediente()
+                    {
+                        Descricao = ingrediente.Descricao
+                    };
+                }).ToList(),
+                Curtidas = dto.Curtidas.Select(curtida =>
+                {
+                    return new ReceitaCurtida()
+                    {
+                        Usuario = curtida.Usuario
+                    };
+                }),
+                Tags = dto.Tags.Select(tag =>
+                {
+                    return new ReceitaTag()
+                    {
+                        Nome = tag.Nome
+                    };
+                })
+            };
 
             return _service.Inserir(entity);
         }
 
-        public List<ReceitaConsultaCompletaDto> Listar()
+        /// <summary>
+        /// Lista de Receitas.
+        /// </summary>
+        /// <returns>Retorna uma lista de receitas.</returns>
+        public IEnumerable<ReceitaDto> Listar()
         {
-            List<ReceitaConsultaCompletaDto> receitasDto = new List<ReceitaConsultaCompletaDto>();
-            
-            List<Receita> lst = _service.Listar();
-
-            foreach (Receita receita in lst)
+            foreach (var receita in _service.Listar())
             {
-                ReceitaConsultaCompletaDto r = new ReceitaConsultaCompletaDto()
+                yield return new ReceitaDto()
                 {
-                    Id = receita.Id,
                     Titulo = receita.Titulo,
-                    ModoPreparo = receita.ModoPreparo,
-                    TempoPreparo = receita.TempoPreparo
-                };
-
-                foreach (Receita.Ingrediente ingrediente in receita.Ingredientes)
-                {
-                    r.Ingredientes.Add(new ReceitaConsultaCompletaDto.Ingrediente()
+                    TempoPreparo = receita.TempoPreparo,
+                    RendimentoPorcao = receita.RendimentoPorcao,
+                    Categoria = new ReceitaCategoriaDto()
                     {
-                        IdReceita = ingrediente.IdReceita,
-                        Nome = ingrediente.Nome,
-                        UnidadeMedida = ingrediente.UnidadeMedida,
-                        Quantidade = ingrediente.Quantidade
-                    });
-                }
-
-                receitasDto.Add(r);
+                        Nome = receita.Categoria?.Nome
+                    },
+                    Ingredientes = receita.Ingredientes.Select(ingrediente =>
+                    {
+                        return new ReceitaIngredienteDto()
+                        {
+                            Descricao = ingrediente.Descricao
+                        };
+                    }).ToList(),
+                    Curtidas = receita.Curtidas.Select(curtida =>
+                    {
+                        return new ReceitaCurtidaDto()
+                        {
+                            Usuario = curtida.Usuario
+                        };
+                    }),
+                    Tags = receita.Tags.Select(tag =>
+                    {
+                        return new ReceitaTagDto()
+                        {
+                            Nome = tag.Nome
+                        };
+                    })
+                };
             }
-
-            return receitasDto;
         }
+
+        #endregion
     }
 }

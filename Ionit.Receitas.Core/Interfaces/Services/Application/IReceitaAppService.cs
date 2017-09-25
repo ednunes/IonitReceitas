@@ -1,6 +1,6 @@
 ﻿namespace Ionit.Receitas.Core.Interfaces.Services.Application
 {
-    using Ionit.Receitas.Core.Dto;
+    using Ionit.Receitas.Core.Entities;
     using System.Collections.Generic;
 
     /// <summary>
@@ -21,7 +21,7 @@
         /// Lista de Receitas.
         /// </summary>
         /// <returns>Retorna uma lista de receitas.</returns>
-        IEnumerable<ReceitaConsultaCompletaDto> Listar();
+        IEnumerable<ReceitaDto> Listar();
 
         #endregion
     }

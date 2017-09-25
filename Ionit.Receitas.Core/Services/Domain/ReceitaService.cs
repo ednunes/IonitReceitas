@@ -1,31 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Ionit.Receitas.Core.Interfaces.Services.Domain;
-using Ionit.Receitas.Core.Entities;
-
-namespace Ionit.Receitas.Core.Services.Domain
+﻿namespace Ionit.Receitas.Core.Services.Domain
 {
+    using Ionit.Receitas.Core.Entities;
+    using Ionit.Receitas.Core.Interfaces.Repositories;
+    using Ionit.Receitas.Core.Interfaces.Services.Domain;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Define a interface de serviço privada para Receita.
+    /// </summary>
     public class ReceitaService : IDomainService<Receita>
     {
-        public int Alterar(Receita entity)
+        #region Variáveis
+
+        /// <summary>
+        /// Domínio de serviços 
+        /// </summary>
+        protected readonly IRepository<Receita> _repository;
+
+        #endregion
+
+        #region Construtores
+
+        /// <summary>
+        /// Inicializa o construtor da classe com o repositório de Receita.
+        /// </summary>
+        /// <param name="repository">Repositório dos dados.</param>
+
+        public ReceitaService(IRepository<Receita> repository)
         {
-            throw new NotImplementedException();
+            _repository = repository;
         }
 
-        public Receita Consultar()
+        #endregion
+
+        /// <summary>
+        /// Consultar Receita pelo id.
+        /// </summary>
+        /// <param name="id">Id da Receita para consultar.</param>
+        /// <returns>Retorna uma Receita com o id passado ou null.</returns>
+        public Receita Consultar(int id)
         {
-            throw new NotImplementedException();
+            return _repository?.Consultar(id);
         }
 
+        /// <summary>
+        /// Lista de Receitas.
+        /// </summary>
+        /// <returns>Retorna uma lista de Receitas.</returns>
+        public IEnumerable<Receita> Listar()
+        {
+            return _repository?.Listar();
+        }
+
+        /// <summary>
+        /// Realizar a inserção da Receita no banco de dados.
+        /// </summary>
+        /// <param name="entity">Receita a ser inserida.</param>
+        /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
         public int Inserir(Receita entity)
         {
-            throw new NotImplementedException();
+            return _repository?.Inserir(entity) ?? 0;
         }
 
-        public List<Receita> Listar()
+        /// <summary>
+        /// Realizar a alteração da Receita no banco de dados.
+        /// </summary>
+        /// <param name="entity">Receita a ser alterada.</param>
+        /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
+        public int Alterar(Receita entity)
         {
-            throw new NotImplementedException();
+            return _repository?.Alterar(entity) ?? 0;
         }
     }
 }
