@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="repository">Repositório dos dados.</param>
 
-        public ReceitaService(IRepository<Receita> repository)
+        public ReceitaService(IRepository<Receita> repository = null)
         {
             _repository = repository;
         }

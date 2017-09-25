@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Ionit.Receitas.Core.Interfaces.Services.Domain;
+using Ionit.Receitas.Core.Entities;
+using Ionit.Receitas.Core.Interfaces.Services.Application;
 
 namespace Ionit.Receitas.WebApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        public ValuesController(IReceitaAppService receitaAppService = null)
+        {
+            var ff = "";
+        }
+
         // GET api/values
         [HttpGet]
         public IEnumerable<string> Get()

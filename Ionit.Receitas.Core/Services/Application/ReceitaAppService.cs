@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="service"></param>
 
-        public ReceitaAppService(IDomainService<Receita> service)
+        public ReceitaAppService(IDomainService<Receita> service = null)
         {
             _service = service;
         }

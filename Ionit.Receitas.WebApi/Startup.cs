@@ -2,8 +2,10 @@
 {
     using Ionit.Receitas.Core.Context;
     using Ionit.Receitas.Core.Entities;
+    using Ionit.Receitas.Core.Interfaces.Repositories;
     using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Ionit.Receitas.Core.Interfaces.Services.Domain;
+    using Ionit.Receitas.Core.Repositories;
     using Ionit.Receitas.Core.Services.Application;
     using Ionit.Receitas.Core.Services.Domain;
     using Microsoft.AspNetCore.Builder;
@@ -43,11 +45,12 @@
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IDomainService<Receita>, ReceitaService>();
-            services.AddTransient<IReceitaAppService, ReceitaAppService>();
-
             services.AddDbContext<ContextMasterChef>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddTransient<IRepository<Receita>, RepositoryReceita>();
+            services.AddTransient<IDomainService<Receita>, ReceitaService>();
+            services.AddTransient<IReceitaAppService, ReceitaAppService>();
+            
             // Add framework services.
             services.AddMvc();
         }
