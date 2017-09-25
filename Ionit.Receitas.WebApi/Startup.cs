@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Ionit.Receitas.Core.Context;
+using Ionit.Receitas.Core.Entities;
+using Ionit.Receitas.Core.Interfaces.Services.Application;
+using Ionit.Receitas.Core.Interfaces.Services.Domain;
+using Ionit.Receitas.Core.Services.Application;
+using Ionit.Receitas.Core.Services.Domain;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Ionit.Receitas.Core.Interfaces.Services.Domain;
-using Ionit.Receitas.Core.Services.Domain;
-using Ionit.Receitas.Core.Entities;
-using Ionit.Receitas.Core.Services.Application;
-using Ionit.Receitas.Core.Interfaces.Services.Application;
-using Ionit.Receitas.Core.Context;
 
 namespace Ionit.Receitas.WebApi
 {
