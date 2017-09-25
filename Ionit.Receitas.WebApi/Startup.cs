@@ -7,6 +7,12 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Ionit.Receitas.Core.Interfaces.Services.Domain;
+using Ionit.Receitas.Core.Services.Domain;
+using Ionit.Receitas.Core.Entities;
+using Ionit.Receitas.Core.Services.Application;
+using Ionit.Receitas.Core.Interfaces.Services.Application;
+using Ionit.Receitas.Core.Context;
 
 namespace Ionit.Receitas.WebApi
 {
@@ -27,6 +33,11 @@ namespace Ionit.Receitas.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IDomainService<Receita>, ReceitaService>();
+            services.AddTransient<IReceitaAppService, ReceitaAppService>();
+
+            services.AddDbContext<ContextMasterChef>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             // Add framework services.
             services.AddMvc();
         }
@@ -36,7 +47,7 @@ namespace Ionit.Receitas.WebApi
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
+            
             app.UseMvc();
         }
     }
