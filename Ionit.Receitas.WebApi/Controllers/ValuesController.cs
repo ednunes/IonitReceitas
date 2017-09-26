@@ -12,9 +12,8 @@ namespace Ionit.Receitas.WebApi.Controllers
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
-        public ValuesController(IReceitaAppService receitaAppService = null)
+        public ValuesController(IReceitaAppService receitaAppService)
         {
-            var ff = "";
         }
 
         // GET api/values

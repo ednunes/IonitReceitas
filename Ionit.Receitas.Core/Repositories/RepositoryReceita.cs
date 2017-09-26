@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="context">Contexto do banco de dados.</param>
 
-        public RepositoryReceita(ContextMasterChef context = null)
+        public RepositoryReceita(ContextMasterChef context)
         {
             _context = context;
         }
