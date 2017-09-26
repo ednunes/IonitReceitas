@@ -16,7 +16,7 @@
         /// <summary>
         /// Domínio de serviços 
         /// </summary>
-        protected readonly IDomainService<Receita> _service;
+        protected readonly IDomainService<ReceitaDto> _service;
 
         #endregion
 
@@ -27,7 +27,7 @@
         /// </summary>
         /// <param name="service"></param>
 
-        public ReceitaAppService(IDomainService<Receita> service)
+        public ReceitaAppService(IDomainService<ReceitaDto> service)
         {
             _service = service;
         }
@@ -52,21 +52,21 @@
                 {
                     Nome = dto.Categoria?.Nome
                 },
-                Ingredientes = dto.Ingredientes.Select(ingrediente =>
+                Ingredientes = dto.Ingredientes?.Select(ingrediente =>
                 {
                     return new ReceitaIngrediente()
                     {
                         Descricao = ingrediente.Descricao
                     };
                 }).ToList(),
-                Curtidas = dto.Curtidas.Select(curtida =>
+                Curtidas = dto.Curtidas?.Select(curtida =>
                 {
                     return new ReceitaCurtida()
                     {
                         Usuario = curtida.Usuario
                     };
                 }),
-                Tags = dto.Tags.Select(tag =>
+                Tags = dto.Tags?.Select(tag =>
                 {
                     return new ReceitaTag()
                     {

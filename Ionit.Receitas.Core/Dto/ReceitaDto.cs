@@ -12,7 +12,7 @@
         /// <summary>
         /// Define o id da receita.
         /// </summary>
-        public int Id { get; set; }
+        public virtual int Id { get; set; }
 
         /// <summary>
         /// Define o título da receita.
