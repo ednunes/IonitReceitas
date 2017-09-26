@@ -7,11 +7,6 @@
     /// </summary>
     public class Receita
     {
-        public Receita()
-        {
-
-        }
-
         #region Propriedades
 
         /// <summary>

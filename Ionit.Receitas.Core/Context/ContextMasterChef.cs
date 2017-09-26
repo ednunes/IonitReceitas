@@ -19,6 +19,11 @@
 
         #region Construtores
 
+        public ContextMasterChef()
+        {
+
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -38,6 +43,11 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Receita>().ToTable("Receita");
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("localhost");
         }
 
         #endregion
