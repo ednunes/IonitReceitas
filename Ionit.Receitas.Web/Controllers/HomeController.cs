@@ -31,5 +31,17 @@ namespace Ionit.Receitas.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Criar()
+        {
+
+            return View();
+        }
+
+        public IActionResult Listar()
+        {
+            return View();
+
+        }
     }
 }
