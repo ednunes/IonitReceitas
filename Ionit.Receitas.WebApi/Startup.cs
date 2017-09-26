@@ -47,9 +47,9 @@
         {
             services.AddDbContext<ContextMasterChef>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddTransient<IRepository<Receita>, RepositoryReceita>();
-            services.AddTransient<IDomainService<Receita>, ReceitaService>();
-            services.AddTransient<IReceitaAppService, ReceitaAppService>();
+            services.AddScoped<IRepository<Receita>, RepositoryReceita>();
+            services.AddScoped<IDomainService<Receita>, ReceitaService>();
+            services.AddScoped<IReceitaAppService, ReceitaAppService>();
             
             // Add framework services.
             services.AddMvc();
