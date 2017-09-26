@@ -34,14 +34,13 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="1.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ionit.Receitas.WebApi\Ionit.Receitas.WebApi.csproj" />
+    <ProjectReference Include="..\Ionit.Receitas.Core\Ionit.Receitas.Core.csproj" />
   </ItemGroup>
 
 </Project>

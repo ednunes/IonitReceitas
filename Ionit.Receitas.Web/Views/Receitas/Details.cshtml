@@ -1,0 +1,45 @@
+﻿@model Ionit.Receitas.Core.Entities.Receita
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Receita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoPreparo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TempoPreparo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RendimentoPorcao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RendimentoPorcao)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

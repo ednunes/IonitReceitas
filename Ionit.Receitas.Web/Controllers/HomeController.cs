@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Ionit.Receitas.Core.Context;
+using Ionit.Receitas.Core.Interfaces.Services.Application;
 
 namespace Ionit.Receitas.Web.Controllers
 {
@@ -30,18 +32,6 @@ namespace Ionit.Receitas.Web.Controllers
         public IActionResult Error()
         {
             return View();
-        }
-
-        public IActionResult Criar()
-        {
-
-            return View();
-        }
-
-        public IActionResult Listar()
-        {
-            return View();
-
         }
     }
 }

@@ -7,6 +7,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Ionit.Receitas.Core.Context;
+using Microsoft.EntityFrameworkCore;
+using Ionit.Receitas.Core.Repositories;
+using Ionit.Receitas.Core.Entities;
+using Ionit.Receitas.Core.Interfaces.Repositories;
+using Ionit.Receitas.Core.Interfaces.Services.Domain;
+using Ionit.Receitas.Core.Interfaces.Services.Application;
+using Ionit.Receitas.Core.Services.Application;
+using Ionit.Receitas.Core.Services.Domain;
 
 namespace Ionit.Receitas.Web
 {
@@ -27,6 +36,12 @@ namespace Ionit.Receitas.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ContextMasterChef>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IRepository<Receita>, RepositoryReceita>();
+            services.AddScoped<IDomainService<Receita>, ReceitaService>();
+            services.AddScoped<IReceitaAppService, ReceitaAppService>();
+
             // Add framework services.
             services.AddMvc();
         }
