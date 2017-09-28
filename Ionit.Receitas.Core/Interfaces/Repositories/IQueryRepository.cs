@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Ionit.Receitas.Core.Interfaces.Repositories
 {
-    public interface IQueryRepositoryReceita<Entity>
+    public interface IQueryRepository<Entity>
     {
         #region Métodos
 
