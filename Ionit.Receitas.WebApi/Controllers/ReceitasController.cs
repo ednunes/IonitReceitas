@@ -4,6 +4,7 @@
     using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// 
@@ -31,9 +32,9 @@
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<ReceitaDto> GetReceitas()
+        public async Task<IEnumerable<ReceitaDto>> GetReceitas()
         {
-            return _receitaAppService.Listar();
+            return await _receitaAppService.Listar();
         }
 
         /// <summary>
