@@ -16,7 +16,7 @@
         /// <summary>
         /// Domínio de serviços 
         /// </summary>
-        protected readonly IDomainService<ReceitaDto> _service;
+        protected readonly IDomainService<Receita> _service;
 
         #endregion
 
@@ -74,9 +74,8 @@
                     };
                 })
             };
-
-            //TODO - corrigir conversão de classes RECEITA e RECEITADTO
-            return _service.Inserir(null);
+            
+            return _service.Inserir(entity);
         }
 
         /// <summary>
