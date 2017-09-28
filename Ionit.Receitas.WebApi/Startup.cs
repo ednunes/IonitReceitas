@@ -50,7 +50,12 @@
             services.AddScoped<IRepository<Receita>, RepositoryReceita>();
             services.AddScoped<IDomainService<Receita>, ReceitaService>();
             services.AddScoped<IReceitaAppService, ReceitaAppService>();
-            
+
+            services.AddSwaggerGen(x =>
+            {
+                x.SwaggerDoc("v1", new Swashbuckle.AspNetCore.Swagger.Info { Title = "MasterChef WebApi", Version = "1.0" });
+            });
+
             // Add framework services.
             services.AddMvc();
         }
@@ -65,7 +70,14 @@
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-            
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(x =>
+            {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "MasterChef WebApi");
+            });
+
             app.UseMvc();
         }
     }

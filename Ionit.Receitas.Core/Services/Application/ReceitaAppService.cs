@@ -75,7 +75,8 @@
                 })
             };
 
-            return _service.Inserir(entity);
+            //TODO - corrigir conversão de classes RECEITA e RECEITADTO
+            return _service.Inserir(null);
         }
 
         /// <summary>
