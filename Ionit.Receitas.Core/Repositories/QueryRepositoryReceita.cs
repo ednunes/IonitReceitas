@@ -1,31 +1,33 @@
 ﻿using Ionit.Receitas.Core.Configs;
 using Ionit.Receitas.Core.Entities;
 using Ionit.Receitas.Core.Interfaces.Repositories;
+using Ionit.Receitas.Core.Repositories.Base;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Ionit.Receitas.Core.Repositories
 {
-    public class QueryRepositoryReceita : IQueryRepository<Receita>
+    public class QueryRepositoryReceita : QueryRepositoryBase, IQueryRepository<Receita>
     {
-        private readonly IMongoClient _client;
-        private readonly IMongoDatabase _database;
+        private readonly string MongoCollection = "receitas";
 
         public QueryRepositoryReceita(IOptions<DbConfig> dbConfig)
+            :base(dbConfig)  {}
+
+        public async Task<Receita> Consultar(int id)
         {
-            _client = new MongoClient(dbConfig.Value.QueryDb.ConnectionString);
-            _database = _client.GetDatabase(dbConfig.Value.QueryDb.DatabaseName);
+            var filter = new BsonDocument("Id", id);
+            List<Receita> receitas = await MongoDatabase.GetCollection<Receita>(MongoCollection).Find(filter).Limit(1).ToListAsync();
+            return receitas.FirstOrDefault();
         }
 
-        public Receita Consultar(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Receita> Listar()
+        public async Task<IEnumerable<Receita>> Listar()
         {
             throw new NotImplementedException();
         }
