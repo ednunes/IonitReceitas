@@ -29,7 +29,9 @@ namespace Ionit.Receitas.Core.Repositories
 
         public async Task<IEnumerable<Receita>> Listar()
         {
-            throw new NotImplementedException();
+            var filter = new BsonDocument();
+            List<Receita> receitas = await MongoDatabase.GetCollection<Receita>(MongoCollection).Find(filter).ToListAsync();
+            return receitas;
         }
     }
 }
