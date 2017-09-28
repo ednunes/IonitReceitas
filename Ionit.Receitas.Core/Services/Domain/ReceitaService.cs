@@ -4,6 +4,7 @@
     using Ionit.Receitas.Core.Interfaces.Repositories;
     using Ionit.Receitas.Core.Interfaces.Services.Domain;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Define a interface de serviço privada para Receita.
@@ -38,18 +39,18 @@
         /// </summary>
         /// <param name="id">Id da Receita para consultar.</param>
         /// <returns>Retorna uma Receita com o id passado ou null.</returns>
-        public Receita Consultar(int id)
+        public async Task<Receita> Consultar(int id)
         {
-            return _repository?.Consultar(id);
+            return await _repository?.Consultar(id);
         }
 
         /// <summary>
         /// Lista de Receitas.
         /// </summary>
         /// <returns>Retorna uma lista de Receitas.</returns>
-        public IEnumerable<Receita> Listar()
+        public async Task<IEnumerable<Receita>> Listar()
         {
-            return _repository?.Listar();
+            return await _repository?.Listar();
         }
 
         /// <summary>
@@ -57,9 +58,9 @@
         /// </summary>
         /// <param name="entity">Receita a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
-        public int Inserir(Receita entity)
+        public async Task<int> Inserir(Receita entity)
         {
-            return _repository?.Inserir(entity) ?? 0;
+            return await _repository?.Inserir(entity);
         }
 
         /// <summary>
@@ -67,9 +68,9 @@
         /// </summary>
         /// <param name="entity">Receita a ser alterada.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
-        public int Alterar(Receita entity)
+        public async Task<int> Alterar(Receita entity)
         {
-            return _repository?.Alterar(entity) ?? 0;
+            return await _repository?.Alterar(entity);
         }
     }
 }
