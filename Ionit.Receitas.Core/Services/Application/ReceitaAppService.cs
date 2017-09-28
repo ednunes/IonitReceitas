@@ -5,6 +5,7 @@
     using Ionit.Receitas.Core.Interfaces.Services.Domain;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Define a interface de serviço pública para Receita.
@@ -41,7 +42,7 @@
         /// </summary>
         /// <param name="dto">Receita a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
-        public int Inserir(ReceitaDto dto)
+        public async Task<int> Inserir(ReceitaDto dto)
         {
             var entity = new Receita()
             {
@@ -75,18 +76,58 @@
                 })
             };
             
-            return _service.Inserir(entity);
+            return await _service.Inserir(entity);
         }
 
         /// <summary>
         /// Lista de Receitas.
         /// </summary>
         /// <returns>Retorna uma lista de receitas.</returns>
-        public IEnumerable<ReceitaDto> Listar()
+        //public IEnumerable<ReceitaDto> Listar()
+        //{
+        //    foreach (var receita in _service.Listar())
+        //    {
+        //        yield return new ReceitaDto()
+        //        {
+        //            Titulo = receita.Titulo,
+        //            TempoPreparo = receita.TempoPreparo,
+        //            RendimentoPorcao = receita.RendimentoPorcao,
+        //            Categoria = new ReceitaCategoriaDto()
+        //            {
+        //                Nome = receita.Categoria?.Nome
+        //            },
+        //            Ingredientes = receita.Ingredientes.Select(ingrediente =>
+        //            {
+        //                return new ReceitaIngredienteDto()
+        //                {
+        //                    Descricao = ingrediente.Descricao
+        //                };
+        //            }).ToList(),
+        //            Curtidas = receita.Curtidas.Select(curtida =>
+        //            {
+        //                return new ReceitaCurtidaDto()
+        //                {
+        //                    Usuario = curtida.Usuario
+        //                };
+        //            }),
+        //            Tags = receita.Tags.Select(tag =>
+        //            {
+        //                return new ReceitaTagDto()
+        //                {
+        //                    Nome = tag.Nome
+        //                };
+        //            })
+        //        };
+        //    }
+        //}
+
+        public async Task<IEnumerable<ReceitaDto>> Listar()
         {
-            foreach (var receita in _service.Listar())
+            List<ReceitaDto> receitas = new List<ReceitaDto>();
+
+            foreach (var receita in await _service.Listar())
             {
-                yield return new ReceitaDto()
+                receitas.Add(new ReceitaDto()
                 {
                     Titulo = receita.Titulo,
                     TempoPreparo = receita.TempoPreparo,
@@ -116,8 +157,10 @@
                             Nome = tag.Nome
                         };
                     })
-                };
+                });
             }
+
+            return receitas;
         }
 
         #endregion

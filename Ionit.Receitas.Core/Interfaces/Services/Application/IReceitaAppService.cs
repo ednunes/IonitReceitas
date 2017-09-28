@@ -2,6 +2,7 @@
 {
     using Ionit.Receitas.Core.Entities;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Definição da interface de aplicação pública do serviço de Receita.
@@ -15,13 +16,13 @@
         /// </summary>
         /// <param name="dto">Receita a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
-        int Inserir(ReceitaDto dto);
+        Task<int> Inserir(ReceitaDto dto);
 
         /// <summary>
         /// Lista de Receitas.
         /// </summary>
         /// <returns>Retorna uma lista de receitas.</returns>
-        IEnumerable<ReceitaDto> Listar();
+        Task<IEnumerable<ReceitaDto>> Listar();
 
         #endregion
     }
