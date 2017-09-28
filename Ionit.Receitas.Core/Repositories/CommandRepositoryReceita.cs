@@ -4,6 +4,7 @@
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Repositories;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Definição da interface do repositório.
@@ -40,7 +41,7 @@
         /// </summary>
         /// <param name="id">Id da entidade para consultar.</param>
         /// <returns>Retorna uma entidade com o id passado ou null.</returns>
-        public Receita Consultar(int id)
+        public async Task<Receita> Consultar(int id)
         {
             return _context.Find<Receita>(id);
         }
@@ -49,7 +50,7 @@
         /// Lista de Entidades.
         /// </summary>
         /// <returns>Retorna uma lista de entidades.</returns>
-        public IEnumerable<Receita> Listar()
+        public async Task<IEnumerable<Receita>> Listar()
         {
             return _context.Set<Receita>();
         }
@@ -59,7 +60,7 @@
         /// </summary>
         /// <param name="entity">Entidade a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
-        public int Inserir(Receita entity)
+        public async Task<int> Inserir(Receita entity)
         {
             return _context.Add(entity)?.Entity?.Id ?? 0;
         }
@@ -69,7 +70,7 @@
         /// </summary>
         /// <param name="entity">Entidade a ser alterada.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
-        public int Alterar(Receita entity)
+        public async Task<int> Alterar(Receita entity)
         {
             return _context.Update(entity)?.Entity?.Id ?? 0;
         }
