@@ -8,7 +8,7 @@
     /// <summary>
     /// Definição da interface do repositório.
     /// </summary>
-    public class RepositoryReceita : IRepository<Receita>
+    public class CommandRepositoryReceita : ICommandRepository<Receita>
     {
         #region Variáveis
 
@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="context">Contexto do banco de dados.</param>
 
-        public RepositoryReceita(ContextMasterChef context)
+        public CommandRepositoryReceita(ContextMasterChef context)
         {
             _context = context;
         }

@@ -5,7 +5,7 @@
     /// <summary>
     /// Definição da interface do repositório.
     /// </summary>
-    public interface IRepository<Entity>
+    public interface ICommandRepository<Entity>
     {
         #region Métodos
 

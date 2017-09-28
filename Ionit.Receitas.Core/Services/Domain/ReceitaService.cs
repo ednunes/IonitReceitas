@@ -15,7 +15,7 @@
         /// <summary>
         /// Domínio de serviços 
         /// </summary>
-        protected readonly IRepository<Receita> _repository;
+        protected readonly ICommandRepository<Receita> _repository;
 
         #endregion
 
@@ -26,7 +26,7 @@
         /// </summary>
         /// <param name="repository">Repositório dos dados.</param>
 
-        public ReceitaService(IRepository<Receita> repository)
+        public ReceitaService(ICommandRepository<Receita> repository)
         {
             _repository = repository;
         }
