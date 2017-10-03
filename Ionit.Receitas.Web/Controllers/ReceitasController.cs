@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Services.Application;
+    using System.Threading.Tasks;
 
     public class ReceitasController : Controller
     {
@@ -29,9 +30,9 @@
         /// GET: Receitas
         /// </summary>
         /// <returns></returns>
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_receitaAppService.Listar());
+            return View(await _receitaAppService.Listar());
         }
 
         // GET: Receitas/Create

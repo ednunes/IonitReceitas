@@ -34,7 +34,7 @@
         [HttpGet]
         public async Task<IEnumerable<ReceitaDto>> GetReceitas()
         {
-            return await _receitaAppService.Listar();
+            return _receitaAppService.Listar();
         }
 
         /// <summary>

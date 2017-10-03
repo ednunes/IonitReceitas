@@ -55,8 +55,6 @@
         /// <param name="optionsBuilder">A builder used to create or modify options for this context.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Console.Write("DIEGO");
-            Console.Write(Option.ConnectionString);
             optionsBuilder.UseSqlServer(Option.ConnectionString);
         }
 

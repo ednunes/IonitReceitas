@@ -16,6 +16,7 @@ using Ionit.Receitas.Core.Interfaces.Services.Domain;
 using Ionit.Receitas.Core.Interfaces.Services.Application;
 using Ionit.Receitas.Core.Services.Application;
 using Ionit.Receitas.Core.Services.Domain;
+using Ionit.Receitas.Core.Configs;
 
 namespace Ionit.Receitas.Web
 {
@@ -36,7 +37,8 @@ namespace Ionit.Receitas.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ContextMasterChef>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.Configure<AppOption>(Configuration.GetSection("AppOptions"));
+            services.AddEntityFrameworkSqlServer().AddDbContext<ContextMasterChef>();
 
             services.AddScoped<ICommandRepository<Receita>, CommandRepositoryReceita>();
             services.AddScoped<IDomainService<Receita>, ReceitaService>();
