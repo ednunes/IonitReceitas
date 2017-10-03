@@ -42,5 +42,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Ionit.Receitas.Core\Ionit.Receitas.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>
