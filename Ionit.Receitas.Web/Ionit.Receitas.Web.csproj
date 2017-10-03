@@ -36,8 +36,10 @@
   <ItemGroup>
     <Folder Include="Views\Shared\" />
     <Folder Include="wwwroot\css\" />
-    <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\receita_img.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ionit.Receitas.Core\Ionit.Receitas.Core.csproj" />

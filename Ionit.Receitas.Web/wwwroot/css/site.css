@@ -10,6 +10,27 @@
     padding-right: 15px;
 }
 
+.navbar-custom{
+    color:#fff
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.panel-default-custom {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.thumb:hover {
+    transform: scale(1.05,1.05);
+}
+
 /* Set widths on the form inputs since otherwise they're 100% wide */
 input,
 select,
