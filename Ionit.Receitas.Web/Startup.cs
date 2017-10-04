@@ -70,7 +70,7 @@ namespace Ionit.Receitas.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Receitas}/{action=Index}/{id?}");
             });
         }
     }

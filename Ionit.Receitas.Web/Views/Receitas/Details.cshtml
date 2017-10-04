@@ -1,45 +1,31 @@
 ﻿@model Ionit.Receitas.Core.Entities.Receita
 
 @{
-    Layout = null;
+    ViewBag.Title = "Ionit MasterChef";
 }
 
-<!DOCTYPE html>
+<h2 class="text-center">@Model.Titulo</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<button type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
+    <span>Tempo de Preparo: </span>
+    <span>@Model.TempoPreparo</span>
+</button>
+<button type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
+    <span>Redimento da Porção: </span>
+    <span>@Model.RendimentoPorcao</span>
+</button>
 
-<div>
-    <h4>Receita</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.TempoPreparo)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.TempoPreparo)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.RendimentoPorcao)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.RendimentoPorcao)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
-</body>
-</html>
+    <h2 class="text-center">Ingredientes</h2>
+    <div class="list-group">
+        @foreach (var item in Model.Ingredientes)
+        {
+            <button type="button" class="list-group-item">@item.Descricao</button>
+        }
+    </div>
+
+
+<button type="button" class="btn btn-default" aria-label="Left Align">
+    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+</button>

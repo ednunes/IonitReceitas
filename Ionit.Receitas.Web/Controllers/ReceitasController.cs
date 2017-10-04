@@ -4,6 +4,7 @@
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Services.Application;
     using System.Threading.Tasks;
+    using System.Collections.Generic;
 
     public class ReceitasController : Controller
     {
@@ -40,7 +41,34 @@
         {
             return View();
         }
-        
+
+        public IActionResult Details(int idReceita)
+        {
+            Receita receita = new Receita();
+            receita.Titulo = "Bolo de cenoura";
+            receita.TempoPreparo = 30;
+            receita.RendimentoPorcao = 4;
+
+            List<ReceitaIngrediente> lst = new List<ReceitaIngrediente>();
+
+            ReceitaIngrediente i1 = new ReceitaIngrediente { Descricao = "Ovo" };
+            ReceitaIngrediente i2 = new ReceitaIngrediente { Descricao = "Farinha" };
+            ReceitaIngrediente i3 = new ReceitaIngrediente { Descricao = "Açúcar" };
+            ReceitaIngrediente i4 = new ReceitaIngrediente { Descricao = "Fermento" };
+            ReceitaIngrediente i5 = new ReceitaIngrediente { Descricao = "Chocolate" };
+
+            lst.Add(i1);
+            lst.Add(i2);
+            lst.Add(i3);
+            lst.Add(i4);
+            lst.Add(i5);
+
+            receita.Ingredientes = lst;
+
+
+            return View(receita);
+        }
+
         /// <summary>
         /// Inserir receita
         /// POST: Receitas/Create
