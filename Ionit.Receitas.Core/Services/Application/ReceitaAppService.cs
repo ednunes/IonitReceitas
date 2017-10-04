@@ -38,6 +38,49 @@
         #region Métodos
 
         /// <summary>
+        /// Consultar Receita pelo id.
+        /// </summary>
+        /// <param name="id">Id da Receita para consultar.</param>
+        /// <returns>Retorna uma Receita com o id passado ou null.</returns>
+        public async Task<ReceitaDto> Consultar(int id)
+        {
+            var result = await _service.Consultar(id);
+
+            return new ReceitaDto()
+            {
+                Id = result?.Id ?? 0,
+                Titulo = result?.Titulo,
+                TempoPreparo = result?.TempoPreparo ?? 0,
+                RendimentoPorcao = result?.RendimentoPorcao ?? 0,
+                Categoria = new ReceitaCategoriaDto()
+                {
+                    Nome = result?.Categoria?.Nome
+                },
+                Ingredientes = result?.Ingredientes?.Select(ingrediente =>
+                {
+                    return new ReceitaIngredienteDto()
+                    {
+                        Descricao = ingrediente?.Descricao
+                    };
+                }) ?? new List<ReceitaIngredienteDto>(),
+                Curtidas = result?.Curtidas?.Select(curtida =>
+                {
+                    return new ReceitaCurtidaDto()
+                    {
+                        Usuario = curtida?.Usuario
+                    };
+                }) ?? new List<ReceitaCurtidaDto>(),
+                Tags = result?.Tags?.Select(tag =>
+                {
+                    return new ReceitaTagDto()
+                    {
+                        Nome = tag?.Nome
+                    };
+                }) ?? new List<ReceitaTagDto>()
+            };
+        }
+
+        /// <summary>
         /// Realizar a inserção da receita no banco de dados.
         /// </summary>
         /// <param name="dto">Receita a ser inserida.</param>
@@ -91,6 +134,7 @@
             {
                 receitas.Add(new ReceitaDto()
                 {
+                    Id = receita.Id,
                     Titulo = receita.Titulo,
                     TempoPreparo = receita.TempoPreparo,
                     RendimentoPorcao = receita.RendimentoPorcao,

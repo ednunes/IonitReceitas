@@ -12,6 +12,13 @@
         #region Métodos
 
         /// <summary>
+        /// Consultar Entidade pelo id.
+        /// </summary>
+        /// <param name="id">Id da entidade para consultar.</param>
+        /// <returns>Retorna uma entidade com o id passado ou null.</returns>
+        Task<ReceitaDto> Consultar(int id);
+
+        /// <summary>
         /// Realizar a inserção da receita no banco de dados.
         /// </summary>
         /// <param name="dto">Receita a ser inserida.</param>

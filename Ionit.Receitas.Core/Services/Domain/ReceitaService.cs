@@ -41,7 +41,7 @@
         /// <returns>Retorna uma Receita com o id passado ou null.</returns>
         public async Task<Receita> Consultar(int id)
         {
-            return await _repository?.Consultar(id);
+            return await _repository.Consultar(id);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@
         /// <returns>Retorna uma lista de Receitas.</returns>
         public async Task<IEnumerable<Receita>> Listar()
         {
-            return await _repository?.Listar();
+            return await _repository.Listar();
         }
 
         /// <summary>
@@ -60,7 +60,7 @@
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
         public async Task<int> Inserir(Receita entity)
         {
-            return await _repository?.Inserir(entity);
+            return await _repository.Inserir(entity);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da Receita.</returns>
         public async Task<int> Alterar(Receita entity)
         {
-            return await _repository?.Alterar(entity);
+            return await _repository.Alterar(entity);
         }
     }
 }

@@ -3,6 +3,7 @@
     using Ionit.Receitas.Core.Context;
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Repositories;
+    using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@
         /// <summary>
         /// Define o context do banco de dados. 
         /// </summary>
-        protected readonly ContextMasterChef _context;
+        protected ContextMasterChef _context;
 
         #endregion
 
@@ -43,7 +44,7 @@
         /// <returns>Retorna uma entidade com o id passado ou null.</returns>
         public async Task<Receita> Consultar(int id)
         {
-            return _context.Find<Receita>(id);
+            return await _context.FindAsync<Receita>(id);
         }
 
         /// <summary>
@@ -52,7 +53,7 @@
         /// <returns>Retorna uma lista de entidades.</returns>
         public async Task<IEnumerable<Receita>> Listar()
         {
-            return _context.Set<Receita>();
+            return await _context.Receitas.ToListAsync();
         }
 
         /// <summary>
@@ -61,8 +62,11 @@
         /// <param name="entity">Entidade a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
         public async Task<int> Inserir(Receita entity)
-        {
-            return _context.Add(entity)?.Entity?.Id ?? 0;
+        {   
+            var result = await _context.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return result?.Entity?.Id ?? 0;
         }
 
         /// <summary>
@@ -72,7 +76,10 @@
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
         public async Task<int> Alterar(Receita entity)
         {
-            return _context.Update(entity)?.Entity?.Id ?? 0;
+            var result = _context.Update(entity);
+            await _context.SaveChangesAsync();
+
+            return result?.Entity?.Id ?? 0;
         }
 
         #endregion
