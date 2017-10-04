@@ -19,6 +19,11 @@
         public DbSet<Receita> Receitas { get; set; }
 
         /// <summary>
+        /// Gets or sets as Categorias.
+        /// </summary>
+        public DbSet<ReceitaCategoria> Categorias { get; set; }
+
+        /// <summary>
         /// Sets the current option.
         /// </summary>
         public AppOption Option { get; private set; }
@@ -39,16 +44,7 @@
         #endregion
 
         #region Métodos
-
-        /// <summary>
-        /// Configure the model of it's context database.
-        /// </summary>
-        /// <param name="modelBuilder">The builder being used to construct the model for this context.</param>
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Receita>().ToTable("Receita");
-        }
-
+        
         /// <summary>
         /// Configure the database of it's context.
         /// </summary>

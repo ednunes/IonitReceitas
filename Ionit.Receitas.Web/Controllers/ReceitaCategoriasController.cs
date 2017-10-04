@@ -6,16 +6,16 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Controller of Receitas.
+    /// Controller of Categorias.
     /// </summary>
-    public class ReceitasController : Controller
+    public class ReceitaCategoriasController : Controller
     {
         #region Propriedades
 
         /// <summary>
-        /// Receita app service.
+        /// Categoria da receita app service.
         /// </summary>
-        private readonly IReceitaAppService _receitaAppService;
+        private readonly IReceitaCategoriaAppService _receitaCategoriaAppService;
 
         #endregion
 
@@ -25,9 +25,9 @@
         /// Inicializa a controller.
         /// </summary>
         /// <param name="receitaAppService">O serviço de receita.</param>
-        public ReceitasController(IReceitaAppService appService)
+        public ReceitaCategoriasController(IReceitaCategoriaAppService appService)
         {
-            _receitaAppService = appService;
+            _receitaCategoriaAppService = appService;
         }
 
         #endregion
@@ -41,7 +41,7 @@
         /// <returns>View com a lista de receitas.</returns>
         public async Task<IActionResult> Index()
         {
-            return View(await _receitaAppService.Listar());
+            return View(await _receitaCategoriaAppService.Listar());
         }
 
         /// <summary>
@@ -62,7 +62,7 @@
         /// <returns>View com detalhes da receita.</returns>
         public async Task<IActionResult> Details(int idReceita)
         {
-            return View(await _receitaAppService.Consultar(idReceita));
+            return View(await _receitaCategoriaAppService.Consultar(idReceita));
         }
 
         /// <summary>
@@ -77,7 +77,7 @@
         {
             if (ModelState.IsValid)
             {
-                _receitaAppService.Inserir(receita);
+                _receitaCategoriaAppService.Inserir(receita);
                 return RedirectToAction(nameof(Index));
             }
             return View(receita);
