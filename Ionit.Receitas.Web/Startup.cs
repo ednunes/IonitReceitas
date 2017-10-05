@@ -41,8 +41,11 @@ namespace Ionit.Receitas.Web
             services.AddEntityFrameworkSqlServer().AddDbContext<ContextMasterChef>(ServiceLifetime.Scoped, ServiceLifetime.Scoped);
 
             services.AddScoped<ICommandRepository<Receita>, CommandRepositoryReceita>();
+            services.AddScoped<ICommandRepository<ReceitaCategoria>, CommandRepositoryReceitaCategoria>();
             services.AddScoped<IDomainService<Receita>, ReceitaService>();
+            services.AddScoped<IDomainService<ReceitaCategoria>, ReceitaCategoriaService>();
             services.AddScoped<IReceitaAppService, ReceitaAppService>();
+            services.AddScoped<IReceitaCategoriaAppService, ReceitaCategoriaAppService>();
 
             // Add framework services.
             services.AddMvc();

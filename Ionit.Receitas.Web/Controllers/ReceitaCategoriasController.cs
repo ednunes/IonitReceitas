@@ -73,7 +73,7 @@
         /// <returns>View com a receita criada.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Titulo,TempoPreparo,RendimentoPorcao")] ReceitaDto receita)
+        public IActionResult Create([Bind("Id,Nome")] ReceitaCategoriaDto receita)
         {
             if (ModelState.IsValid)
             {
