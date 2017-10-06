@@ -14,6 +14,15 @@
     color:#fff
 }
 
+.titlebox {
+    position: relative;
+    line-height: 1;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #ea5323;
+    display: block;
+}
+
 .navbar-default .navbar-nav > li > a {
     color: #fff;
 }

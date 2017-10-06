@@ -4,33 +4,33 @@
     ViewBag.Title = "Ionit MasterChef";
 }
 
-<div class="container">
-    <div class="row">
+    <div class="container">
+        <div class="row">
 
-        <h2 class="text-center">Receitas</h2>
+            <h2 class="text-center">Receitas</h2>
 
-    </div>
+        </div>
 
-    <div class="panel panel-default panel-default-custom">
-        <div class="panel-body">
-            @foreach (var item in Model)
+        <div class="panel panel-default panel-default-custom">
+            <div class="panel-body">
+                @foreach (var item in Model)
             {
-                <div class="col-xs-6 col-md-3 thumb">
+                    <div class="col-xs-6 col-md-3 thumb">
 
-                    <a href="/Receitas/Details?idReceita=@item.Id">
+                        <a href="/Receitas/Details?idReceita=@item.Id">
 
-                        <div class="thumbnail thumbnail-custom">
-                            <img src="~/images/receita_img.png" class="img-responsive redondo" alt="Foto Receita" />
+                            <div class="thumbnail thumbnail-custom">
+                                <img src="~/images/receita_img.png" class="img-responsive redondo" alt="Foto Receita" />
 
-                        </div>
-                        <p style="font-size: 1.3em; color:black; height:39px; padding-top:7px;padding-bottom:7px;" class="text-center">@item.Titulo</p>
-                    </a>
+                            </div>
+                            <p style="font-size: 1.3em; color:black; height:39px; padding-top:7px;padding-bottom:7px;" class="text-center">@item.Titulo</p>
+                        </a>
 
-                </div>
-            }
+                    </div>
+                }
+
+            </div>
 
         </div>
 
     </div>
-
-</div>
