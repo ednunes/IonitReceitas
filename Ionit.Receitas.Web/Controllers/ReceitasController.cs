@@ -3,6 +3,7 @@
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -16,6 +17,7 @@
         /// Receita app service.
         /// </summary>
         private readonly IReceitaAppService _receitaAppService;
+        private readonly IReceitaCategoriaAppService _receitaCategoriaAppService;
 
         #endregion
 
@@ -25,9 +27,10 @@
         /// Inicializa a controller.
         /// </summary>
         /// <param name="receitaAppService">O serviço de receita.</param>
-        public ReceitasController(IReceitaAppService appService)
+        public ReceitasController(IReceitaAppService appService, IReceitaCategoriaAppService appServiceCategoria)
         {
             _receitaAppService = appService;
+            _receitaCategoriaAppService = appServiceCategoria;
         }
 
         #endregion
@@ -51,6 +54,8 @@
         /// <returns>View de criação da receita.</returns>
         public IActionResult Create()
         {
+            ViewBag.Receita = _receitaCategoriaAppService.Listar().Result;
+
             return View();
         }
 
