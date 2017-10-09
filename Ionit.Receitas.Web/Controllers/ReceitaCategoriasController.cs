@@ -60,9 +60,9 @@
         /// </summary>
         /// <param name="idReceita">Id da receita.</param>
         /// <returns>View com detalhes da receita.</returns>
-        public async Task<IActionResult> Details(int idReceita)
+        public async Task<IActionResult> Details(int id)
         {
-            return View(await _receitaCategoriaAppService.Consultar(idReceita));
+            return View(await _receitaCategoriaAppService.Consultar(id));
         }
 
         /// <summary>
