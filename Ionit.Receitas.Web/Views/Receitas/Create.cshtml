@@ -1,9 +1,5 @@
 ﻿@model Ionit.Receitas.Core.Entities.Receita
 
-@{
-    ViewBag.Title = "Ionit MasterChef";
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -38,7 +34,7 @@
                     <label asp-for="Categoria" class="control-label">Categoria: </label>
                     <select class="form-control" asp-for="Categoria.Id">
                         @{
-                            foreach (var item in ViewBag.Receita)
+                            foreach (var item in ViewBag.ReceitaCategoria)
                             {
                                 <option value="@item.Id">
                                     @item.Nome
@@ -48,17 +44,33 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Ingredientes" class="control-label">Ingredientes: </label>
-                    <textarea class="form-control"></textarea>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    "Ingredientes"
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var item in Model?.Ingredientes)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Descricao)
+                                    </td>
+                                </tr>
+                            }*@
+                        </tbody>
+                    </table>
+                    @{ Html.RenderPartial("CreateIngrediente"); }
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Incluir" class="btn btn-default" />
+                    <a asp-action="Index" class="btn btn-default">Voltar</a>
                 </div>
             </form>
-        </div>
-
-        <div>
-            <a asp-action="Index">Lista de Receitas</a>
         </div>
     </div>
 

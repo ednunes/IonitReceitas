@@ -4,10 +4,9 @@
     using Ionit.Receitas.Core.Entities;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Options;
-    using System;
 
     /// <summary>
-    /// 
+    /// Context of Database.
     /// </summary>
     public class ContextMasterChef : DbContext
     {
@@ -22,6 +21,11 @@
         /// Gets or sets as Categorias.
         /// </summary>
         public DbSet<ReceitaCategoria> Categorias { get; set; }
+
+        /// <summary>
+        /// Gets or sets os Ingredientes.
+        /// </summary>
+        public DbSet<ReceitaIngrediente> Ingredientes { get; set; }
 
         /// <summary>
         /// Sets the current option.

@@ -53,8 +53,18 @@
         /// <returns>View de criação da receita.</returns>
         public IActionResult Create()
         {
-            ViewBag.Receita = _receitaCategoriaAppService.Listar().Result;
+            ViewBag.ReceitaCategoria = _receitaCategoriaAppService.Listar().Result;
 
+            return View();
+        }
+
+        /// <summary>
+        /// Criação do Ingrediente.
+        /// GET: Ingredientes/Create
+        /// </summary>
+        /// <returns>View de criação do ingrediente.</returns>
+        public IActionResult CreateIngrediente()
+        {
             return View();
         }
 
