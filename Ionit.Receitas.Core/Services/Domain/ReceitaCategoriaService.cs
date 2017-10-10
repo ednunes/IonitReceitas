@@ -16,7 +16,7 @@
         /// <summary>
         /// Domínio de serviços 
         /// </summary>
-        protected readonly ICommandRepository<ReceitaCategoria> _repository;
+        protected ICommandRepository<ReceitaCategoria> _repository;
 
         #endregion
 

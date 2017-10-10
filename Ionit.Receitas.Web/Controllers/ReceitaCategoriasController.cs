@@ -15,7 +15,7 @@
         /// <summary>
         /// Categoria da receita app service.
         /// </summary>
-        private readonly IReceitaCategoriaAppService _receitaCategoriaAppService;
+        private IReceitaCategoriaAppService _receitaCategoriaAppService;
 
         #endregion
 

@@ -17,7 +17,7 @@
         /// <summary>
         /// Domínio de serviços 
         /// </summary>
-        protected readonly IDomainService<Receita> _service;
+        protected IDomainService<Receita> _service;
 
         #endregion
 

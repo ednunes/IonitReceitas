@@ -3,7 +3,6 @@
     using Ionit.Receitas.Core.Entities;
     using Ionit.Receitas.Core.Interfaces.Services.Application;
     using Microsoft.AspNetCore.Mvc;
-    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -16,8 +15,8 @@
         /// <summary>
         /// Receita app service.
         /// </summary>
-        private readonly IReceitaAppService _receitaAppService;
-        private readonly IReceitaCategoriaAppService _receitaCategoriaAppService;
+        private IReceitaAppService _receitaAppService;
+        private IReceitaCategoriaAppService _receitaCategoriaAppService;
 
         #endregion
 
@@ -78,7 +77,7 @@
         /// <returns>View com a receita criada.</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,Titulo,TempoPreparo,RendimentoPorcao")] ReceitaDto receita)
+        public IActionResult Create(ReceitaDto receita)
         {
             if (ModelState.IsValid)
             {

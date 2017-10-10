@@ -16,7 +16,7 @@
         /// <summary>
         /// 
         /// </summary>
-        private readonly IReceitaAppService _receitaAppService;
+        private IReceitaAppService _receitaAppService;
 
         /// <summary>
         /// 

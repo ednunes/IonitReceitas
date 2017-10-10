@@ -1,31 +1,28 @@
 ﻿@model Ionit.Receitas.Core.Entities.ReceitaDto
 
-@{
-    ViewBag.Title = "Ionit MasterChef";
-}
+<h2 class="text-left">@Model.Titulo</h2>
 
-<h2 class="text-center">@Model.Titulo</h2>
-
-<button type="button" class="btn btn-default" aria-label="Left Align">
-    <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
-    <span>Tempo de Preparo: </span>
-    <span>@Model.TempoPreparo</span>
-</button>
-<button type="button" class="btn btn-default" aria-label="Left Align">
-    <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
-    <span>Redimento da Porção: </span>
-    <span>@Model.RendimentoPorcao</span>
-</button>
-
-    <h2 class="text-center">Ingredientes</h2>
-    <div class="list-group">
-        @foreach (var item in Model.Ingredientes)
-        {
-            <button type="button" class="list-group-item">@item.Descricao</button>
-        }
+<div class="panel-body">
+    <div class="thumbnail thumbnail-custom">
+        <img src="~/images/receita_img.png" class="img-responsive redondo" alt="Foto Receita" />
     </div>
 
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
+        <span>Tempo de Preparo: </span>
+        <span>@Model.TempoPreparo</span>
+    </button>
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphcon glyphicon glyphicon-time" aria-hidden="true"></span>
+        <span>Redimento da Porção: </span>
+        <span>@Model.RendimentoPorcao</span>
+    </button>
+</div>
 
-<button type="button" class="btn btn-default" aria-label="Left Align">
-    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-</button>
+<h2 class="text-left">Ingredientes</h2>
+<div class="list-group">
+    @foreach (var item in Model.Ingredientes)
+    {
+        <button type="button" class="list-group-item">@item.Descricao</button>
+    }
+</div>

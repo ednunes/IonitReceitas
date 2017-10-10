@@ -62,7 +62,7 @@
         /// <param name="entity">Entidade a ser inserida.</param>
         /// <returns>Retorna quantidade de linhas fetadas pela inserção da entidade.</returns>
         public async Task<int> Inserir(Receita entity)
-        {   
+        {
             var result = await _context.AddAsync(entity);
             await _context.SaveChangesAsync();
 
